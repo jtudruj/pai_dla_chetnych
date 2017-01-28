@@ -30,10 +30,10 @@ public class ExcelGenerator extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/vnd.ms-excel");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            response.setContentType("application/vnd.ms-excel");
+            
             out.println("Technologia\tGlosy");
             out.println(Helper.hashMapToExcelString(Helper.readResults()));
             

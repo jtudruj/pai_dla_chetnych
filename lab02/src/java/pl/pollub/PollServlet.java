@@ -81,6 +81,7 @@ public class PollServlet extends HttpServlet {
             
             out.print(Helper.hashMapToString(Helper.readResults()));
             out.println("<a href=\"ExcelGenerator\">Wygeneruj Excel</a>");
+            out.println("<a href=\"ChartGenerator\">Wygeneruj Wykres</a>");
             
             
             out.println("</body>");
