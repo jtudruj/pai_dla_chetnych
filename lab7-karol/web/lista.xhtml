@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="szablon.xhtml">
+
+            <ui:define name="top">
+                <center>
+                    <h2>Customers</h2>
+                </center>
+            </ui:define>
+            <ui:define name="left">
+                <center>
+                    <h3>MENU</h3>
+                </center>
+
+                <h:form>
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="index" action="pokazIndex" />
+                    <div class="add-padding-10px" />
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="lista" action="pokazLista" />
+                    <div class="add-padding-10px" />
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="dodaj" action="dodaj" />
+                </h:form>
+            </ui:define>
+            <ui:define name="content">
+                <h:dataTable value="#{customerManagedBean.getCustomers()}" var="customer"
+                             styleClass="table table-sm table-striped"
+                             headerClass="thead-inverse"
+                             rowClasses="">
+                    <h:column>
+                        <f:facet name="header">Lp</f:facet>
+                            #{rowCounter.row}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">customer_id</f:facet>
+                            #{customer.customerId}
+                    </h:column>
+
+                    <h:column>    				
+                        <f:facet name="header">name</f:facet>    				
+                            #{customer.name}
+                    </h:column>
+                    <h:column>    				
+                        <f:facet name="header">email</f:facet>    				
+                            #{customer.email}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">city</f:facet>
+                            #{customer.city}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">phone</f:facet>
+                            #{customer.phone}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">state</f:facet>
+                            #{customer.state}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">addressLine1</f:facet>
+                            #{customer.addressline1}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">addressLine2</f:facet>
+                            #{customer.addressline2}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">fax</f:facet>
+                            #{customer.fax}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">credit_Limit</f:facet>
+                            #{customer.creditLimit}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">DISCOUNT_CODE</f:facet>
+                            #{customer.discountCode}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">ZIP</f:facet>
+                            #{customer.zip}
+                    </h:column>
+                    <h:column>
+                        <h:form>
+                            <h:commandButton styleClass="btn btn-primary" value="Edytuj" 
+                                             type="submit" action="#{customerManagedBean.prepareEdit()}" />
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+            </ui:define>
+            <ui:define name="bottom">
+                PAI 2017
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+
