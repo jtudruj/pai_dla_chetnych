@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Template</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet" />
+        <style>
+            .add-padding-10px {
+                padding: 10px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="add-padding-10px">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="top" class="col-md-12">
+                        <div class="jumbotron">
+                            <ui:insert name="top">Top</ui:insert>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="left" class="col-md-12">
+                        <div class="jumbotron">
+                            <ui:insert name="left">Left</ui:insert>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="content" class="col-md-12">
+                        <div class="jumbotron">
+                            <ui:insert name="content">Content</ui:insert>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="bottom" class="col-md-12">
+                        <div class="jumbotron">
+                            <ui:insert name="bottom">Bottom</ui:insert>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </h:body>
+</html>

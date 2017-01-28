@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <body>
+        <ui:composition template="szablon.xhtml">
+
+            <ui:define name="top">
+                <center>
+                    <h2>Customers</h2>
+                </center>
+            </ui:define>
+            <ui:define name="left">
+                <center>
+                    <h3>MENU</h3>
+                </center>
+                <h:form>
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="index" action="pokazIndex" />
+                    <div class="add-padding-10px" />
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="lista" action="pokazLista" />
+                    <div class="add-padding-10px" />
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="dodaj" action="dodaj" />
+                </h:form>
+            </ui:define>
+            <ui:define name="content">
+                <p>
+                    <b>Politechnika Lubelska Instytut Informatyki</b> <br /> Ul.
+                    Nadbystrzycka 36b, Lublin <br /> <b>Programowanie Aplikacji
+                        Internetowych</b>
+                </p>
+            </ui:define>
+            <ui:define name="bottom">
+                PAI 2017
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

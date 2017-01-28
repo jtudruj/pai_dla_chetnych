@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <body>
+        <ui:composition template="szablon.xhtml">
+
+            <ui:define name="top">
+                <center>
+                    <h2>Customers</h2>
+                </center>
+            </ui:define>
+            <ui:define name="left">
+                <center>
+                    <h3>MENU</h3>
+                </center>
+                <h:form>
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="index" action="pokazIndex" />
+                    <div class="add-padding-10px" />
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="lista" action="pokazLista" />
+                    <div class="add-padding-10px" />
+                    <h:commandButton styleClass="btn btn-default" style="width: 100%;"
+                                     value="dodaj" action="dodaj" />
+                </h:form>
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <h2>Formularz edycji customera</h2>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">customerId</label>
+                        <div class="col-10">
+                            <h:inputText id="customerId" styleClass="form-control" value="#{customerManagedBean.getSelected().customerId}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>
+                            <h:message for="customerId" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">Name</label>
+                        <div class="col-10">
+                            <h:inputText id="name" styleClass="form-control" value="#{customerManagedBean.getSelected().name}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>
+                            <h:message for="name" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                        <div class="col-10">
+                            <h:inputText id="email" styleClass="form-control" value="#{customerManagedBean.getSelected().email}" required="true" 
+                                         requiredMessage="To pole nie może być puste" validatorMessage="Wprowadzono niepoprawny adres email" >
+                                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                            </h:inputText>
+                            <h:message for="email" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">zip</label>
+                        <div class="col-10">
+                            <h:selectOneMenu value="#{customerManagedBean.getSelected().zip}" styleClass="form-control"
+                                             id="zip" required="true" requiredMessage="To pole nie może być puste">
+                                <f:selectItems value="#{microMarketHelper.getMicroMarkets()}"></f:selectItems>
+                            </h:selectOneMenu>
+<!--                            <h:inputText id="zip" styleClass="form-control" value="#{customerManagedBean.getSelected().zip}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>-->
+                            <h:message for="zip" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">addressline1</label>
+                        <div class="col-10">
+                            <h:inputText id="addressline1" styleClass="form-control" value="#{customerManagedBean.getSelected().addressline1}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>
+                            <h:message for="addressline1" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">addressline2</label>
+                        <div class="col-10">
+                            <h:inputText id="addressline2" styleClass="form-control" value="#{customerManagedBean.getSelected().addressline2}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>
+                            <h:message for="addressline2" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">city</label>
+                        <div class="col-10">
+                            <h:inputText id="city" styleClass="form-control" value="#{customerManagedBean.getSelected().city}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>
+                            <h:message for="city" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">state</label>
+                        <div class="col-10">
+                            <h:inputText id="state" styleClass="form-control" value="#{customerManagedBean.getSelected().state}" required="true" 
+                                         requiredMessage="To pole nie może być puste" validatorMessage="Wprowadzono nieprawidłowy kod stanu, dozwolone dwa znaki a-z lub A-Z" >
+                                <f:validateRegex pattern="[A-Za-z]{2}" />
+                            </h:inputText>
+                            <h:message for="state" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">phone</label>
+                        <div class="col-10">
+                            <h:inputText id="phone" styleClass="form-control" value="#{customerManagedBean.getSelected().phone}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>
+                            <h:message for="phone" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">fax</label>
+                        <div class="col-10">
+                            <h:inputText id="fax" styleClass="form-control" value="#{customerManagedBean.getSelected().fax}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>
+                            <h:message for="fax" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">creditLimit</label>
+                        <div class="col-10">
+                            <h:inputText id="creditLimit" styleClass="form-control" value="#{customerManagedBean.getSelected().creditLimit}" required="true" 
+                                         requiredMessage="To pole nie może być puste"  converterMessage="Wprowadzona wartość musi być liczbą całkowitą"  validatorMessage="Wprowadzona wartość musi być liczbą">
+                                <!--<f:validateRegex pattern="^[0-9]+$" />-->
+                                <f:converter converterId="javax.faces.Integer" />
+
+                            </h:inputText>
+                            <h:message for="creditLimit" style="color:red" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-2 col-form-label">discountCode</label>
+                        <div class="col-10">
+<!--                            <h:inputText id="discountCode" styleClass="form-control" value="#{customerManagedBean.getSelected().discountCode}" required="true" 
+                                         requiredMessage="To pole nie może być puste">
+                            </h:inputText>-->
+                            <h:selectOneMenu value="#{customerManagedBean.getSelected().discountCode}" styleClass="form-control"
+                                             id="discountCode" required="true" requiredMessage="To pole nie może być puste">
+                                <f:selectItems value="#{discountCodeHelper.discountCode}"></f:selectItems>
+                            </h:selectOneMenu>
+                            <h:message for="discountCode" style="color:red" />
+                        </div>
+                    </div>
+                    <!--                    <h:outputLabel value="Discount Code"></h:outputLabel>
+                                        
+                                        <h:selectOneMenu value="#{customerManagedBean.getSelected().discountCode}" styleClass="form-control"
+                                                         id="discountCode" required="true" >
+                                            <f:selectItems value="#{discountCodeHelper.discountCode}"></f:selectItems>
+                                        </h:selectOneMenu>-->
+
+                    <h:commandButton styleClass="btn btn-primary" value="Submit" 
+                                     type="submit" action="#{customerHelper.update(customerManagedBean.getSelected())}" />
+                </h:form>
+            </ui:define>
+            <ui:define name="bottom">
+                PAI 2017
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+
