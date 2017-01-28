@@ -19,16 +19,25 @@ import java.util.Iterator;
  * @author linuxlite
  */
 public class Helper {
+    
+    private static final String FILE = "wyniki_lab02.txt";
+    
     public static void writeResults(HashMap results) {
         try {
-//            FileWriter fw = new FileWriter("wyniki.txt");
-            PrintWriter writer = new PrintWriter("wyniki.txt", "UTF-8");
+            File file = new File(FILE);
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (Exception e) {
+                    System.out.println("Problem ze stworzeniem pliku " + e);
+                }
+                
+            }
+            PrintWriter writer = new PrintWriter(file);
             for (Iterator it = results.keySet().iterator(); it.hasNext();) {
                 Object key = it.next();
-//                fw.write(key + ":" + results.get(key) + "\n");
                 writer.println(key + ":" + results.get(key));
             }
-//            fw.close();
             writer.close();
         } catch (Exception e) {
             System.out.println("Nie znaleziono pliku!");
@@ -38,7 +47,7 @@ public class Helper {
     public static HashMap readResults() {
         String line = "";
         HashMap results = new HashMap();
-        File file = new File("wyniki.txt");
+        File file = new File(FILE);
         FileInputStream fis = null;
         BufferedReader br = null;
         try {
@@ -50,7 +59,7 @@ public class Helper {
             }
             br.close();
         } catch (Exception e) {
-            System.out.println("Blad odczytu pliku!");
+            System.out.println("Blad odczytu pliku! " + e);
         }
         return results;
     }
