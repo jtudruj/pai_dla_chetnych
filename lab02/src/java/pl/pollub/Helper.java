@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
@@ -62,5 +63,40 @@ public class Helper {
             System.out.println("Blad odczytu pliku! " + e);
         }
         return results;
+    }
+    
+    public static HashMap mergeHashMaps(HashMap input, HashMap output) {
+        Iterator iterator = input.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry record = (Map.Entry)iterator.next();
+            if(output.containsKey(record.getKey())) {
+                output.put(record.getKey(), (Integer)output.get(record.getKey())+1);
+            } else {
+                output.put(record.getKey(), record.getValue());
+            }
+        }
+        return output;
+    }
+    
+    public static String hashMapToString(HashMap hashMap) {
+        String result = "<ul>";
+        
+        Iterator iterator = hashMap.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry record = (Map.Entry) iterator.next();
+            result += "<li>" + record.getKey() + ": " + record.getValue() + "</li>";
+        }
+        result += "</ul>";
+        return result;
+    }
+    
+        public static String hashMapToExcelString(HashMap hashMap) {
+        String result = "";
+        Iterator iterator = hashMap.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry record = (Map.Entry) iterator.next();
+            result += record.getKey() + "\t" + record.getValue() + "\n";
+        }
+        return result;
     }
 }

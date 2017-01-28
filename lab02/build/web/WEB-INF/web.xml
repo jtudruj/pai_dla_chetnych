@@ -4,9 +4,17 @@
         <servlet-name>PollServlet</servlet-name>
         <servlet-class>pl.pollub.PollServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcelGenerator</servlet-name>
+        <servlet-class>pl.pollub.ExcelGenerator</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PollServlet</servlet-name>
         <url-pattern>/PollServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcelGenerator</servlet-name>
+        <url-pattern>/ExcelGenerator</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
