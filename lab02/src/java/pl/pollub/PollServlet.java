@@ -68,16 +68,10 @@ public class PollServlet extends HttpServlet {
                 }
                 
                 
+                System.out.println("dupadupa" + results);
                 Helper.writeResults(results);
             }
-            
-            
-            
-            
-            
-            
-            
-            
+           
             out.println("</body>");
             out.println("</html>");
         }
