@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -20,12 +21,15 @@ import java.util.Iterator;
 public class Helper {
     public static void writeResults(HashMap results) {
         try {
-            FileWriter fw = new FileWriter("wyniki.txt");
+//            FileWriter fw = new FileWriter("wyniki.txt");
+            PrintWriter writer = new PrintWriter("wyniki.txt", "UTF-8");
             for (Iterator it = results.keySet().iterator(); it.hasNext();) {
                 Object key = it.next();
-                fw.write(key + ":" + results.get(key) + "\n");
+//                fw.write(key + ":" + results.get(key) + "\n");
+                writer.println(key + ":" + results.get(key));
             }
-            fw.close();
+//            fw.close();
+            writer.close();
         } catch (Exception e) {
             System.out.println("Nie znaleziono pliku!");
         }
