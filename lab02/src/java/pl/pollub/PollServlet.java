@@ -49,6 +49,9 @@ public class PollServlet extends HttpServlet {
             
             
             Enumeration paramNames = request.getParameterNames();
+            if (!paramNames.hasMoreElements()) {
+                out.println("Brak danych");
+            }
             while(paramNames.hasMoreElements()) {
                 String paramName = (String)paramNames.nextElement();
 //                out.print(paramName);
@@ -68,13 +71,15 @@ public class PollServlet extends HttpServlet {
                         out.println("<li>"+paramValues[i]+"</li>");
                         results.put(paramValues[i], 1);
                     }
+                    out.println("</ul>");
                 }
                 results = this.mergeHashMaps(results, oldResults);
                 Helper.writeResults(results);
             }
             
-            out.println("<h2>Zobaczy wyniki ankiety: </h2>");
-            out.println(Helper.readResults());
+            out.println("<h1>Zobaczy wyniki ankiety: </h1>");
+            
+            out.print(this.hashMapToString(Helper.readResults()));
             
             out.println("</body>");
             out.println("</html>");
@@ -93,6 +98,18 @@ public class PollServlet extends HttpServlet {
         }
 //        output.containsKey(this)
         return output;
+    }
+    
+    private String hashMapToString(HashMap hashMap) {
+        String result = "<ul>";
+        
+        Iterator iterator = hashMap.entrySet().iterator();
+        while(iterator.hasNext()) {
+            Map.Entry record = (Map.Entry) iterator.next();
+            result += "<li>" + record.getKey() + ": " + record.getValue() + "</li>";
+        }
+        result += "</ul>";
+        return result;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
