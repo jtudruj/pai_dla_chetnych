@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h3>Adding Form Components</h3>
+            <h:panelGrid columns="3">
+                <h:outputLabel for="customerId">customerId:</h:outputLabel>
+                <h:inputText id="customerId" value="#{customerManagedBean.selected.customerId}"
+                             required="true" requiredMessage="Pole customerId jest wymagane!">
+                    <f:validateLongRange maximum="9999999999" minimum="0" />
+                </h:inputText>
+                <h:message for="customerId" errorStyle="color:red; display:block"/>
+
+                <h:outputLabel for="discountCode">discountCode:</h:outputLabel>
+                <h:selectOneMenu id="discountCode" value="#{customerManagedBean.selected.discountCode}"
+                                 required="true" requiredMessage="Pole discountCode jest wymagane!">
+                    <f:selectItems value="#{discountCodeManagedBean.getDiscountCodes()}"></f:selectItems>
+                </h:selectOneMenu>
+                <h:message for="discountCode" errorStyle="color:red; display:block"/>
+
+                <h:outputLabel for="zip">zip:</h:outputLabel>
+                <h:selectOneMenu id="zip" value="#{customerManagedBean.selected.zip}"
+                                 required="true" requiredMessage="Pole zip jest wymagane!">
+                    <f:selectItems value="#{microMarketManagedBean.getZipCodes()}"></f:selectItems>
+                </h:selectOneMenu>
+                <h:message for="zip" errorStyle="color:red; display:block"/>
+
+                <h:outputLabel for="name">name:</h:outputLabel>
+                <h:inputText id="name" value="#{customerManagedBean.selected.name}" required="true" requiredMessage="Pole name jest wymagane!" />
+                <h:message for="name" errorStyle="color:red; display:block"/>
+
+                <h:outputLabel for="addressline1">addressline1:</h:outputLabel>
+                <h:inputText id="addressline1" value="#{customerManagedBean.selected.addressline1}" required="true" requiredMessage="Pole addressline1 jest wymagane!"/>
+                <h:message for="addressline1" errorStyle="color:red; display:block"/>
+                
+                <h:outputLabel for="addressline2">addressline2:</h:outputLabel>
+                <h:inputText value="#{customerManagedBean.selected.addressline2}"></h:inputText>
+                <h:message for="addressline2" errorStyle="color:red; display:block"/>
+                
+                <h:outputLabel for="city">city:</h:outputLabel>
+                <h:inputText value="#{customerManagedBean.selected.city}"></h:inputText>
+                <h:message for="city" errorStyle="color:red; display:block"/>
+                
+                <h:outputLabel for="state">state:</h:outputLabel>
+                <h:inputText value="#{customerManagedBean.selected.state}"></h:inputText>
+                <h:message for="state" errorStyle="color:red; display:block"/>
+                
+                <h:outputLabel for="phone">phone:</h:outputLabel>
+                <h:inputText value="#{customerManagedBean.selected.phone}"></h:inputText>
+                <h:message for="phone" errorStyle="color:red; display:block"/>
+                
+                <h:outputLabel for="fax">fax:</h:outputLabel>
+                <h:inputText value="#{customerManagedBean.selected.fax}"></h:inputText>
+                <h:message for="fax" errorStyle="color:red; display:block"/>
+                
+                <h:outputLabel for="email">email:</h:outputLabel>
+                <h:inputText value="#{customerManagedBean.selected.email}"></h:inputText>
+                <h:message for="email" errorStyle="color:red; display:block"/>
+                
+                <h:outputLabel for="creditLimit">creditLimit:</h:outputLabel>
+                <h:inputText id="credtLimit" value="#{customerManagedBean.selected.creditLimit}" required="true" requiredMessage="Pole creditLimit jest wymagane!" converter="javax.faces.Long"></h:inputText>
+                <h:message for="credtLimit" errorStyle="color:red; display:block"/>
+
+                <h:commandButton action="#{customerManagedBean.prepareSaveAndList()}" value="Submit"></h:commandButton>
+
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
